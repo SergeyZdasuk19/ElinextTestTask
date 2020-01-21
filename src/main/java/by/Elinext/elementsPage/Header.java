@@ -1,10 +1,9 @@
-package by.Elinext.elements;
+package by.Elinext.elementsPage;
 
 import by.Elinext.driver.DriverSingleton;
 import by.Elinext.entity.BreadCrumb;
 import by.Elinext.exceptions.RecordException;
-import lombok.AllArgsConstructor;
-import lombok.Data;
+import by.Elinext.pages.BasePage;
 import org.openqa.selenium.interactions.Actions;
 
 import java.util.Arrays;
@@ -12,11 +11,9 @@ import java.util.LinkedList;
 
 import static by.Elinext.service.WaitEl.$menu;
 
-@Data
-@AllArgsConstructor
 public class Header {
 
-    public static void openSpecialMenu(BreadCrumb breadCrumb) {
+    public Header openSpecialMenu(BreadCrumb breadCrumb) {
         LinkedList<String> list = new LinkedList<>(
                 Arrays.asList(
                         breadCrumb
@@ -36,5 +33,6 @@ public class Header {
                         }
                 );
         $menu(list.getLast()).click();
+        return this;
     }
 }

@@ -7,7 +7,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class WaitEl {
-    private static final int WAIT_TIMEOUT_SECONDS = 15;
+    private static final int WAIT_TIMEOUT_SECONDS = 20;
     private static final int WAIT_TIMEOUT_M_SECONDS = 1000;
 
 
@@ -16,15 +16,9 @@ public class WaitEl {
                 .until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector(by)));
     }
 
-    public static Boolean $title(String by){
-        return new WebDriverWait(DriverSingleton.getDriver(), WAIT_TIMEOUT_SECONDS)
-                .until(ExpectedConditions.titleIs(by));
-    }
-
     public static WebElement $menu(String by) {
         return new WebDriverWait(DriverSingleton.getDriver(), WAIT_TIMEOUT_SECONDS, WAIT_TIMEOUT_M_SECONDS)
                 .until(ExpectedConditions.visibilityOfElementLocated(
                         By.xpath("//li[@class=\"dropdown\"]//a[text() ='" + by.trim() + "']")));
     }
-
 }

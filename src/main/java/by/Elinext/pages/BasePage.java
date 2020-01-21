@@ -1,17 +1,17 @@
-package by.Elinext.elements;
+package by.Elinext.pages;
 
+import by.Elinext.driver.DriverSingleton;
 import by.Elinext.entity.BreadCrumb;
 import by.Elinext.exceptions.RecordException;
 import by.Elinext.factory.BreadCrumbFactory;
-import lombok.AllArgsConstructor;
-import lombok.Data;
 
-import static by.Elinext.service.WaitEl.*;
+import static by.Elinext.service.WaitEl.$visibility;
 
-@Data
-@AllArgsConstructor
-public class Content {
+public abstract class BasePage {
+
     private static final String BREADCRUMBS = "ul[class*='rsmFlow']";
+
+    public abstract BasePage load();
 
     public static BreadCrumb getBreadCrumbs() {
         try {
@@ -20,4 +20,10 @@ public class Content {
             throw new RecordException("Not found any breadcrumbs");
         }
     }
+
+    public static String getUrl() {
+        return DriverSingleton.getDriver().getCurrentUrl();
+    }
+
+
 }

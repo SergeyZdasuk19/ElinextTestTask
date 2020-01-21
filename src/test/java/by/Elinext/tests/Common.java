@@ -2,6 +2,7 @@ package by.Elinext.tests;
 
 
 import by.Elinext.driver.DriverSingleton;
+import by.Elinext.pages.HomePage;
 import lombok.extern.log4j.Log4j;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
@@ -10,7 +11,7 @@ import org.testng.annotations.BeforeClass;
 public abstract class Common {
     @BeforeClass()
     public void setUp() {
-        DriverSingleton.getDriver().get("http://qa.yotec.net/");
+        new HomePage().load();
     }
 
     @AfterClass()
